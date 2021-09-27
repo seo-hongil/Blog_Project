@@ -1,5 +1,7 @@
 package com.blog.mapper;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -19,15 +21,23 @@ public class BoardMapperTest {
 	     private BoardMapper mapper;
 	 
 	     @Test
-	     public void testEnroll() {
-	         
-	         BoardVO vo = new BoardVO();
-	         
-	         vo.setTitle("mapper test");
-	         vo.setContent("mapper test");
-	         vo.setWriter("mapper test");
-	         
-	         mapper.enroll(vo);
-	         
+	     public void testGetList() {
+	    	 List list = mapper.getList();
+	    	 
+	    	 for(Object a : list) {
+	             log.info("" + a);
+	         }
 	     }
+//	     @Test
+//	     public void testEnroll() {
+//	         
+//	         BoardVO vo = new BoardVO();
+//	         
+//	         vo.setTitle("mapper test");
+//	         vo.setContent("mapper test");
+//	         vo.setWriter("mapper test");
+//	         
+//	         mapper.enroll(vo);
+//	         
+//	     }
 }
