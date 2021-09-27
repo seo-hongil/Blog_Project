@@ -19,15 +19,28 @@ public class BoardMapperTest {
 	     
 	     @Autowired
 	     private BoardMapper mapper;
-	 
+	     
+	     /* 게시판 조회 테스트 */ 
 	     @Test
-	     public void testGetList() {
-	    	 List list = mapper.getList();
-	    	 
-	    	 for(Object a : list) {
-	             log.info("" + a);
-	         }
+	     public void testGetPage() {
+	        
+	         int bno = 8;
+	         
+	         log.info("" + mapper.getPage(bno));
+	         
 	     }
+	     
+	     /* 목록 출력 테스트 */
+//	     @Test
+//	     public void testGetList() {
+//	    	 List list = mapper.getList();
+//	    	 
+//	    	 for(Object a : list) {
+//	             log.info("" + a);
+//	         }
+//	     }
+	     
+	     /* 등록 테스트 */
 //	     @Test
 //	     public void testEnroll() {
 //	         

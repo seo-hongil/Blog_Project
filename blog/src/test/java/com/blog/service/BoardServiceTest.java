@@ -18,13 +18,24 @@ public class BoardServiceTest {
 	 @Autowired
     private BoardService service;
 	 
-	 /* 게시판 목록 테스트 */
-	    @Test
-	    public void testGetList() {
+	 /* 게시판 조회 테스트 */
+	 @Test
+	    public void testGETPage() {
 	        
-	        service.getList().forEach(board -> log.info("" + board));        
+	        int bno = 8;
+	        
+	        log.info("" + service.getPage(bno));
 	        
 	    }
+	 
+	 
+	 /* 게시판 목록 테스트 */
+//	    @Test
+//	    public void testGetList() {
+//	        
+//	        service.getList().forEach(board -> log.info("" + board));        
+//	        
+//	    }
 	 
 
     /* 게시판 등록 테스트 */

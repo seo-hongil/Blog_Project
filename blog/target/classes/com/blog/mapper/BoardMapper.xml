@@ -7,11 +7,16 @@
   
 		    <!-- 게시판 등록 -->
 		    <insert id="enroll">
-		        insert into blog_board(title, content, writer) values (#{title}, #{content}, #{writer})      
+		       	 insert into blog_board(title, content, writer) values (#{title}, #{content}, #{writer})      
 		    </insert>
 		    
 		    <!-- 게시판 목록 -->
 		    <select id="getList" resultType="com.blog.model.BoardVO">    
-        		select * from blog_board
+        			select * from blog_board
         	</select>
+        	
+        	<!-- 게시판 조회 -->
+		    <select id="getPage" resultType="com.blog.model.BoardVO">
+		       	 select * from blog_board where bno = #{bno}	    
+		    </select>
   </mapper>
