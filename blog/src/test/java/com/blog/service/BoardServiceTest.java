@@ -18,19 +18,30 @@ public class BoardServiceTest {
 	 @Autowired
     private BoardService service;
 	 
+
+	    /* 게시판 삭제 */
+	     @Test
+	     public void testDelete() {
+	         
+	         int result = service.delete(13);
+	         log.info("result : " + result);
+	         
+	     }
+	 
+	 
 	 /* 게시판 수정 */
-     @Test
-     public void testModify() {
-         
-         BoardVO board = new BoardVO();
-         board.setBno(9);
-         board.setTitle("수정 제목");
-         board.setContent("수정 내용");
-         
-         int result = service.modify(board);
-         log.info("result : " +result);
-         
-     }     
+//     @Test
+//     public void testModify() {
+//         
+//         BoardVO board = new BoardVO();
+//         board.setBno(9);
+//         board.setTitle("수정 제목");
+//         board.setContent("수정 내용");
+//         
+//         int result = service.modify(board);
+//         log.info("result : " +result);
+//         
+//     }     
 	 
 	 
 	 /* 게시판 조회 테스트 */

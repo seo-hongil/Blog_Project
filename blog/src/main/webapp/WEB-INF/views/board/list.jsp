@@ -107,11 +107,13 @@
 			function checkAlert(result) {
 				if (result == ' ') {
 					reutrn;
-				} else if (result == "enrol success") {
-					alert("등록이 완료되었습니다.");
-				} else if(result === "modify success"){ // 수정 페이지에서 목록 페이지 이동시 수정완료 표시
+				} else if (result == "enrol success") {	  // 등록완료시 alert
+					alert("등록이 완료되었습니다.");	
+				} else if(result == "modify success"){ // 수정 페이지에서 목록 페이지 이동시 alert 
 	            	alert("수정이 완료되었습니다.");
-	       		}
+	       		} else if(result == "delete success"){ // 수정 페이지에서 삭제 완료 시 alert 
+	                alert("삭제가 완료되었습니다.");  
+	            }
 			}
 		});
 		

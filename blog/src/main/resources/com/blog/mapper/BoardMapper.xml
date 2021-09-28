@@ -24,4 +24,9 @@
 		    <update id="modify">
 		        update blog_board set title = #{title}, content = #{content}, updatedate = sysdate where bno = #{bno}
 		    </update>
+		    
+		     <!-- 게시판 삭제 -->
+		    <delete id="delete">
+		        delete from blog_board where bno = #{bno}    
+		    </delete>
   </mapper>
