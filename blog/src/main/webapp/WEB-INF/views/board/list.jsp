@@ -109,7 +109,9 @@
 					reutrn;
 				} else if (result == "enrol success") {
 					alert("등록이 완료되었습니다.");
-				}
+				} else if(result === "modify success"){ // 수정 페이지에서 목록 페이지 이동시 수정완료 표시
+	            	alert("수정이 완료되었습니다.");
+	       		}
 			}
 		});
 		
@@ -123,6 +125,7 @@
 		        moveForm.attr("action", "/board/getPage");
 		        moveForm.submit();
 		    });
+		    
 	</script>
 </body>
 </html>
