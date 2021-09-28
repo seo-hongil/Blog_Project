@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.blog.mapper.BoardMapper;
 import com.blog.model.BoardVO;
+import com.blog.model.PagingInform;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -43,5 +44,19 @@ public class BoardServiceImpl implements BoardService {
 		    public int delete(int bno) {
 		        
 		        return mapper.delete(bno);
+		    }    
+		
+		 /* 페이징처리한 게시판 목록 */
+		    @Override
+		    public List<BoardVO> getListPaging(PagingInform pi) {
+		        
+		        return mapper.getListPaging(pi);
+		    }    
+		    
+		    /* 게시물 총 갯수 */
+		    @Override
+		    public int getTotal() {
+		        
+		        return mapper.getTotal();
 		    }    
 }

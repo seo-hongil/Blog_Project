@@ -1,5 +1,7 @@
 package com.blog.service;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.slf4j.Logger;
@@ -9,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.blog.model.BoardVO;
+import com.blog.model.PagingInform;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
@@ -18,16 +21,28 @@ public class BoardServiceTest {
 	 @Autowired
     private BoardService service;
 	 
+	 /* 게시판 조회(페이징 적용) */
+	    @Test
+	    public void testGetListPaging() {
+	        
+	    	PagingInform pi = new PagingInform();
+	        
+	        List list = service.getListPaging(pi);
+	        
+	        list.forEach(board -> log.info("" + board));
+	        
+	        
+	    }
 
 	    /* 게시판 삭제 */
-	     @Test
-	     public void testDelete() {
-	         
-	         int result = service.delete(13);
-	         log.info("result : " + result);
-	         
-	     }
-	 
+//	     @Test
+//	     public void testDelete() {
+//	         
+//	         int result = service.delete(13);
+//	         log.info("result : " + result);
+//	         
+//	     }
+//	 
 	 
 	 /* 게시판 수정 */
 //     @Test
