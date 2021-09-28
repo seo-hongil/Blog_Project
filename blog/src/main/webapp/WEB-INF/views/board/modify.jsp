@@ -60,10 +60,12 @@ textarea{
 <body>
 <h1>조회 페이지</h1>
 	<form id="modifyForm" action="/board/modify" method="post">
+		<input type = "hidden" name="pageNum" value='<c:out value="${ pi.pageNum}"/>'>
+		<input type = "hidden" name="amount" value='<c:out value="${ pi.amount}"/>'>
 			<div class="input_wrap">
 				<label>게시판 번호</label>
 				<input name="bno" readonly="readonly" value='<c:out value="${pageInfo.bno}"/>' >
-			</div>
+			</div>			
 			<div class="input_wrap">
 				<label>게시판 제목</label>
 				<input name="title"  value='<c:out value="${pageInfo.title}"/>' >
@@ -93,6 +95,8 @@ textarea{
 	</form>
 	<form id="infoForm" action="/board/modify" method="get">
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
+		<input type = "hidden" name="pageNum" value='<c:out value="${ pi.pageNum}"/>'>
+		<input type = "hidden" name="amount" value='<c:out value="${ pi.amount}"/>'>
 	</form>
 	
 <script>
@@ -100,7 +104,7 @@ textarea{
 	let mForm = $("#modifyForm");  		// 페이지 데이터 수정 from
 	
 
-	//수정
+	//수정완료
 	 $("#modify_btn").on("click", function(e){
 	        mForm.submit();
 	    });

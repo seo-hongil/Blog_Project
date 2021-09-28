@@ -71,39 +71,44 @@ public class BoardController {
 	   
 	   /* 게시판 조회 */
 	   @GetMapping("/getPage")
-	   public void boardGetPageGET(int bno, Model model) {
+	   public void boardGetPageGET(int bno, Model model, PagingInform pi) {
 		   
 		   model.addAttribute("pageInfo", bservice.getPage(bno));
+		   model.addAttribute("pi", pi);
 		   
 	   }
 	 
 	   /* 수정 페이지 이동 */
 	    @GetMapping("/modify")
-	    public void boardModifyGET(int bno, Model model) {
+	    public void boardModifyGET(int bno, Model model, PagingInform pi) {
 	        
 	        model.addAttribute("pageInfo", bservice.getPage(bno));
-	        
+	        model.addAttribute("pi", pi);
 	    }
 	    
 	    /* 페이지 수정 */
 	    @PostMapping("/modify")
-	    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr) {
+	    public String boardModifyPOST(BoardVO board, RedirectAttributes rttr, PagingInform pi) {
 	        
 	        bservice.modify(board);
 	        
 	        rttr.addFlashAttribute("result", "modify success");
-	        
+	        rttr.addAttribute("pageNum", pi.getPageNum());
+	        rttr.addAttribute("amount", pi.getAmount());
 	        return "redirect:/board/list";
 	        
 	    }
 	    
 	    /* 페이지 삭제 */
 	    @PostMapping("/delete")
-	    public String boardDeletePOST(int bno, RedirectAttributes rttr) {
+	    public String boardDeletePOST(int bno, RedirectAttributes rttr,  PagingInform pi) {
 	        
 	        bservice.delete(bno);
 	        
 	        rttr.addFlashAttribute("result", "delete success");
+	        
+	        rttr.addAttribute("pageNum", pi.getPageNum());
+	        rttr.addAttribute("amount", pi.getAmount());
 	        
 	        return "redirect:/board/list";
 	    }
