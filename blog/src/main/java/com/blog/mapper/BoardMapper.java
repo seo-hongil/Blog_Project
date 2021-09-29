@@ -13,5 +13,5 @@ public interface BoardMapper {
     public int modify(BoardVO board); //게시판 수정
     public int delete(int bno); 				  //게시판 삭제
     public List<BoardVO> getListPaging(PagingInform pi);// 페이징처리한 게시판 목록 
-    public int getTotal();						 // 게시판 게시물의 총 개수
+    public int getTotal(PagingInform pi);						 // 게시판 게시물의 총 개수
 }

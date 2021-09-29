@@ -60,8 +60,11 @@ textarea{
 <body>
 <h1>조회 페이지</h1>
 	<form id="modifyForm" action="/board/modify" method="post">
-		<input type = "hidden" name="pageNum" value='<c:out value="${ pi.pageNum}"/>'>
-		<input type = "hidden" name="amount" value='<c:out value="${ pi.amount}"/>'>
+			<input type = "hidden" name="pageNum" value='<c:out value="${ pi.pageNum}"/>'>
+			<input type = "hidden" name="amount" value='<c:out value="${ pi.amount}"/>'>
+			<input type="hidden" name="type" value="${pi.type }"> 	
+			<input type="hidden" name="keyword" value="${pi.keyword }">	
+			
 			<div class="input_wrap">
 				<label>게시판 번호</label>
 				<input name="bno" readonly="readonly" value='<c:out value="${pageInfo.bno}"/>' >
@@ -97,6 +100,8 @@ textarea{
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
 		<input type = "hidden" name="pageNum" value='<c:out value="${ pi.pageNum}"/>'>
 		<input type = "hidden" name="amount" value='<c:out value="${ pi.amount}"/>'>
+	    <input type="hidden" name="type" value="${pi.type }"> 	
+		<input type="hidden" name="keyword" value="${pi.keyword }">    
 	</form>
 	
 <script>

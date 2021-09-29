@@ -82,12 +82,46 @@
  .active{
       background-color: #5F9EA0;
   }
+  
+  .search_area{
+    display: inline-block;
+    margin-top: 30px;
+    margin-left: 260px;
+  }
+  .search_area input{
+      height: 30px;
+    width: 250px;
+  }
+  .search_area button{
+     width: 100px;
+    height: 36px;
+  }
+  .search_area select{
+  	height : 35px;
+  }
+  
 </style>
 </head>
 <body>
 
 	<h1>목록페이지입니다.</h1>
-
+	<form>
+	    <div class="search_wrap">
+      		<div class="search_area">
+		      		 <select name="type">
+		                <option value="" <c:out value="${pagedto.pi.type == null?'selected':'' }"/>>--</option>
+		                <option value="T" <c:out value="${pagedto.pi.type eq 'T'?'selected':'' }"/>>제목</option>
+		                <option value="C" <c:out value="${pagedto.pi.type eq 'C'?'selected':'' }"/>>내용</option>
+		                <option value="W" <c:out value="${pagedto.pi.type eq 'W'?'selected':'' }"/>>작성자</option>
+		                <option value="TC" <c:out value="${pagedto.pi.type eq 'TC'?'selected':'' }"/>>제목 + 내용</option>
+		                <option value="TW" <c:out value="${pagedto.pi.type eq 'TW'?'selected':'' }"/>>제목 + 작성자</option>
+		                <option value="TCW" <c:out value="${pagedto.pi.type eq 'TCW'?'selected':'' }"/>>제목 + 내용 + 작성자</option>
+		            </select>    
+         		 	<input type="text" name="keyword" value="${pagedto.pi.keyword }">
+          		<button>Search</button>
+      		</div>
+  		</div>
+	  </form> 		    
 	<div class="table_wrap">
 		<a href="/board/enroll" class="top_btn">게시판 등록</a>
 		<table>
@@ -115,6 +149,8 @@
 	        </c:forEach>
 		</table>
 		
+
+	    		
 		<!--  페이징처리 -->	
 		<div class="pageInfo_wrap" >
 		        <div class="pageInfo_area">
@@ -141,6 +177,8 @@
 		 <form id="moveForm" method="get">    
 		        <input type="hidden" name="pageNum" value="${pagedto.pi.pageNum }">
 		        <input type="hidden" name="amount" value="${pagedto.pi.amount }">    
+		        <input type="hidden" name="type" value="${pagedto.pi.type }">
+		        <input type="hidden" name="keyword" value="${pagedto.pi.keyword }">
     	</form>
 	</div>
 
@@ -184,6 +222,29 @@
 		        moveForm.attr("action", "/board/list"); // action = /board/list 로 속성 추가
 		        moveForm.submit();
 		        
+		    });
+		    
+		    // 검색 기능 
+		     $(".search_area button").on("click", function(e){
+			        e.preventDefault(); //버튼 동작 멈춤
+			        
+			        let type = $(".search_area select").val();
+			        let keyword = $(".search_area input[name='keyword']").val();
+			        
+			        if(!type){
+			            alert("검색 종류를 선택하세요.");
+			            return false;
+			        }
+			        
+			        if(!keyword){
+			            alert("키워드를 입력하세요.");
+			            return false;
+			        }        
+			        
+			        moveForm.find("input[name='type']").val(type); // 기존 타입에 입력받은 타입으로 변경 
+			        moveForm.find("input[name='keyword']").val(keyword); // 기존 키워드에 있는 내용을 입력받은 거로 변경
+			        moveForm.find("input[name='pageNum']").val(1);  // 검색시 pageNum을 1로 변경해서 1페이지로 검색되게 만듬
+			        moveForm.submit();
 		    });
 	</script>
 </body>

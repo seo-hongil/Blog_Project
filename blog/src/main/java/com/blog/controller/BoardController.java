@@ -33,7 +33,7 @@ public class BoardController {
 	        
 	        model.addAttribute("list", bservice.getListPaging(pi));
 
-	        PageDTO pagedto = new PageDTO(pi, bservice.getTotal());
+	        PageDTO pagedto = new PageDTO(pi, bservice.getTotal(pi));
 	        
 	        model.addAttribute("pagedto", pagedto);
 	    }
@@ -95,6 +95,8 @@ public class BoardController {
 	        rttr.addFlashAttribute("result", "modify success");
 	        rttr.addAttribute("pageNum", pi.getPageNum());
 	        rttr.addAttribute("amount", pi.getAmount());
+	        rttr.addAttribute("keyword", pi.getKeyword());
+	        rttr.addAttribute("type", pi.getType());
 	        return "redirect:/board/list";
 	        
 	    }
@@ -109,7 +111,8 @@ public class BoardController {
 	        
 	        rttr.addAttribute("pageNum", pi.getPageNum());
 	        rttr.addAttribute("amount", pi.getAmount());
-	        
+	        rttr.addAttribute("keyword", pi.getKeyword());
+	        rttr.addAttribute("type", pi.getType());
 	        return "redirect:/board/list";
 	    }
 }

@@ -55,8 +55,8 @@ public class BoardServiceImpl implements BoardService {
 		    
 		    /* 게시물 총 갯수 */
 		    @Override
-		    public int getTotal() {
+		    public int getTotal(PagingInform pi) {
 		        
-		        return mapper.getTotal();
+		        return mapper.getTotal(pi);
 		    }    
 }

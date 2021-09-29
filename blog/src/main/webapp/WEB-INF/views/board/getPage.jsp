@@ -85,6 +85,8 @@ textarea{
 		<input type="hidden" id="bno" name="bno" value='<c:out value="${pageInfo.bno}"/>'>
 		<input type = "hidden" name="pageNum" value='<c:out value="${ pi.pageNum}"/>'>
 		<input type = "hidden" name="amount" value='<c:out value="${ pi.amount}"/>'>
+		<input type="hidden" name="type" value="${pi.type }"> 
+		<input type="hidden" name="keyword" value="${pi.keyword }">  
 	</form>
 <script>
 	let form = $("#infoForm");
